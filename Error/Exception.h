@@ -1,10 +1,11 @@
 #ifndef _EXCEPTION_H_
 #define _EXCEPTION_H_
 
+#include "Object.h"
 namespace ZXRLib
 {
 #define THROW_EXCEPTION(e,m) (throw e(m,__FILE__,__LINE__))
-class Exception
+class Exception:public Object
 {
 protected:
     char* m_message;
@@ -37,6 +38,35 @@ public:
         return *this;
     }
 };
+class NoEnoughMemoryException:public Exception
+{
+public:
+    NoEnoughMemoryException():Exception(0){}
+    NoEnoughMemoryException(const char* message):Exception(message){}
+    NoEnoughMemoryException(const char*file,int line):Exception(file,line){}
+    NoEnoughMemoryException(const char*message,const char*file,int line):Exception(message,file,line){}
+    NoEnoughMemoryException(const NoEnoughMemoryException& e):Exception(e){}
+    NoEnoughMemoryException& operator= (const NoEnoughMemoryException& e)
+    {
+        Exception::operator =(e);
+        return *this;
+    }
+};
+class InvalidOperationException:public Exception
+{
+public:
+    InvalidOperationException():Exception(0){}
+    InvalidOperationException(const char* message):Exception(message){}
+    InvalidOperationException(const char*file,int line):Exception(file,line){}
+    InvalidOperationException(const char*message,const char*file,int line):Exception(message,file,line){}
+    InvalidOperationException(const InvalidOperationException& e):Exception(e){}
+    InvalidOperationException& operator= (const InvalidOperationException& e)
+    {
+        Exception::operator =(e);
+        return *this;
+    }
+};
+
 }
 
 #endif // EXCEPTION_H

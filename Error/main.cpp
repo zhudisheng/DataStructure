@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Exception.h"
 #include "Object.h"
+#include "Smartpointer.h"
 
 using namespace std;
 using namespace ZXRLib;
@@ -19,12 +20,17 @@ public:
 int main(int argc, char *argv[])
 {
 
+
+    SmartPointer<int> *sp = new SmartPointer<int>();
+    delete sp;
+    /*
     Object* obj1 = new Test();
     Object* obj2 = new Child();
     cout << "obj1 = " << obj1 << endl;
     cout << "obj2 = " << obj2 << endl;
     delete obj1;
     delete obj2;
+    */
     /*
     try
     {
