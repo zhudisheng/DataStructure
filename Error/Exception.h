@@ -52,6 +52,20 @@ public:
         return *this;
     }
 };
+class IndexOutOFBoundsException:public Exception
+{
+public:
+    IndexOutOFBoundsException():Exception(0){}
+    IndexOutOFBoundsException(const char* message):Exception(message){}
+    IndexOutOFBoundsException(const char*file,int line):Exception(file,line){}
+    IndexOutOFBoundsException(const char*message,const char*file,int line):Exception(message,file,line){}
+    IndexOutOFBoundsException(const IndexOutOFBoundsException& e):Exception(e){}
+    IndexOutOFBoundsException& operator= (const IndexOutOFBoundsException& e)
+    {
+        Exception::operator =(e);
+        return *this;
+    }
+};
 class InvalidOperationException:public Exception
 {
 public:

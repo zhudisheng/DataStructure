@@ -2,7 +2,21 @@
 #include "Exception.h"
 #include "Object.h"
 #include "Smartpointer.h"
+#include "List.h"
+#include "seqlist.h"
 
+
+using namespace std;
+using namespace ZXRLib;
+int main()
+{
+    List<int> *l = NULL;
+    SeqList<int> *sl = NULL;
+    return 0;
+}
+
+
+/*
 using namespace std;
 using namespace ZXRLib;
 class Test:public Object
@@ -23,7 +37,6 @@ int main(int argc, char *argv[])
 
     SmartPointer<int> *sp = new SmartPointer<int>();
     delete sp;
-    /*
     Object* obj1 = new Test();
     Object* obj2 = new Child();
     cout << "obj1 = " << obj1 << endl;
@@ -49,7 +62,7 @@ int main(int argc, char *argv[])
         cout << e.message()<<endl;
         cout << e.location()<<endl;
     }
-    */
     return 0;
 
 }
+*/
