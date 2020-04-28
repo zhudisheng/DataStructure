@@ -3,14 +3,17 @@ CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
-SOURCES += main.cpp \
+SOURCES += \
     Exception.cpp \
     Object.cpp \
-    Smartpointer.cpp
+    Smartpointer.cpp \
+    main.cpp
 
 HEADERS += \
     Exception.h \
     Object.h \
     Smartpointer.h \
     List.h \
-    Seqlist.h
+    StaticList.h \
+    SeqList.h \
+    DynamicList.h

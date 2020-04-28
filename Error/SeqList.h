@@ -18,7 +18,7 @@ public:
         ret = ret&&(m_length < capacity());
         if(ret)
         {
-            for(int p = m_length-1;p = i;p--)
+            for(int p = m_length-1;p >= i;p--)
             {
                 m_array[p+1] = m_array[p];
             }
@@ -26,6 +26,10 @@ public:
             m_length++;
         }
         return ret;
+    }
+    bool insert(const T&e)
+    {
+        return insert(m_length,e);
     }
     bool remove(int i)
     {

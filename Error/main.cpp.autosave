@@ -5,7 +5,7 @@ using namespace std;
 using namespace ZXRLib;
 int main()
 {
-    DynamicList<int> l(5);
+    DynamicList<int> l(5 );
     for(int i = 0;i < l.capacity();i++)
     {
         l.insert(i);
