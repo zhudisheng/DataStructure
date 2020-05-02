@@ -7,7 +7,7 @@ SOURCES += \
     Exception.cpp \
     Object.cpp \
     Smartpointer.cpp \
-    main2.cpp
+    mian4.cpp
 
 HEADERS += \
     Exception.h \
