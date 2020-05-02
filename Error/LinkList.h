@@ -2,6 +2,7 @@
 #define LINKLIST_H
 #include "List.h"
 #include "Exception.h"
+//#include "Smartpointer.h"
 namespace ZXRLib{
 
 template<typename T>
@@ -93,8 +94,13 @@ public:
             */
             Node* toDel = current->next;
             current->next = toDel->next;
-            destroy(toDel);
+            if(m_current == toDel)
+            {
+                m_current = toDel->next;
+            }
+
             m_length--;
+            destroy(toDel);
         }
     }
     bool set(int i,const T&e)
@@ -174,9 +180,9 @@ public:
         {
             Node*toDel = m_header.next;
             m_header.next = toDel->next;
-            delete toDel;
+            m_length--;
+            destroy(toDel);
         }
-        m_length = 0;
     }
     bool move(int i,int step = 1)
     {
