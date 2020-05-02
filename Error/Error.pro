@@ -7,7 +7,7 @@ SOURCES += \
     Exception.cpp \
     Object.cpp \
     Smartpointer.cpp \
-    main.cpp
+    main2.cpp
 
 HEADERS += \
     Exception.h \
@@ -19,4 +19,5 @@ HEADERS += \
     DynamicList.h \
     Array.h \
     StaticArray.h \
-    DynamicArray.h
+    DynamicArray.h \
+    LinkList.h
