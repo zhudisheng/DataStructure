@@ -1,23 +1,23 @@
-#ifndef LINKLIST_H
-#define LINKLIST_H
+#ifndef DUALLINKLIST_H
+#define DUALLINKLIST_H
 #include "List.h"
 #include "Exception.h"
-//#include "Smartpointer.h"
 namespace ZXRLib{
-
 template<typename T>
-class LinkList:public List<T>
+class DualLinkList:public List<T>
 {
 protected:
     struct Node:public Object
     {
         T value;
         Node* next;
+        Node* pre;
     };
     //mutable Node m_header;
     mutable struct:public Object {
         char reserved[sizeof(T)];
         Node* next;
+        Node* pre;
     }m_header;
     int m_length;
     int m_step;
@@ -40,9 +40,10 @@ protected:
         delete pn;
     }
 public:
-    LinkList()
+    DualLinkList()
     {
         m_header.next = NULL;
+        m_header.pre = NULL;
         m_length = 0;
         m_step = 1;
         m_current = NULL;
@@ -62,6 +63,7 @@ public:
             {
                 //Node* current = &m_header;
                 Node* current = position(i);
+                Node* next = current->next;
                 /*
                 for(int p=0;p<i;p++)
                 {
@@ -69,8 +71,21 @@ public:
                 }
                 */
                 node->value = e;
-                node->next = current->next;
+                node->next = next;
+                //node->next = current->next;
                 current->next = node;
+                if(current != reinterpret_cast<Node*>(&m_header))
+                {
+                    node->pre = current;
+                }
+                else
+                {
+                    node->pre = NULL;
+                }
+                if(next != NULL)
+                {
+                    next->pre = node;
+                }
                 m_length++;
             }
             else
@@ -93,12 +108,17 @@ public:
             }
             */
             Node* toDel = current->next;
-            current->next = toDel->next;
+            Node* next = toDel->next;
+            //current->next = toDel->next;
             if(m_current == toDel)
             {
                 m_current = toDel->next;
             }
-
+            current->next = next;
+            if(next != NULL)
+            {
+                next->pre = toDel->pre;
+            }
             m_length--;
             destroy(toDel);
         }
@@ -176,12 +196,9 @@ public:
     }
     void clear()
     {
-        while(m_header.next)
+        while(m_length > 0)
         {
-            Node*toDel = m_header.next;
-            m_header.next = toDel->next;
-            m_length--;
-            destroy(toDel);
+            remove(0);
         }
     }
     virtual bool move(int i,int step = 1)
@@ -219,11 +236,21 @@ public:
         }
         return (i == m_step);
     }
-    ~LinkList()
+    virtual bool pre()
+    {
+        int i = 0;
+        while((i<m_step)&&!end())
+        {
+            m_current = m_current->pre;
+            i++;
+        }
+        return (i==m_step);
+    }
+    ~DualLinkList()
     {
         clear();
     }
 
 };
 }
-#endif // LINKLIST_H
+#endif // DUALLINKLIST_H

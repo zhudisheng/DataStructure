@@ -7,7 +7,8 @@ SOURCES += \
     Exception.cpp \
     Object.cpp \
     Smartpointer.cpp \
-    mian4.cpp
+    DtString.cpp \
+    main10.cpp
 
 HEADERS += \
     Exception.h \
@@ -23,4 +24,15 @@ HEADERS += \
     StaticLinkList.h \
     Pointer.h \
     SharedPointer.h \
-    SmartPointer.h
+    SmartPointer.h \
+    CircleList.h \
+    DuaLlinkList.h \
+    LinuxList.h \
+    DualCircleList.h \
+    Stack.h \
+    StaticStack.h \
+    LinkStack.h \
+    Queue.h \
+    StaticQueue.h \
+    LinkQueue.h \
+    DtString.h
