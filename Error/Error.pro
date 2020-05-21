@@ -8,7 +8,7 @@ SOURCES += \
     Object.cpp \
     Smartpointer.cpp \
     DtString.cpp \
-    main10.cpp
+    main13.cpp
 
 HEADERS += \
     Exception.h \
@@ -35,4 +35,5 @@ HEADERS += \
     Queue.h \
     StaticQueue.h \
     LinkQueue.h \
-    DtString.h
+    DtString.h \
+    Sort.h
